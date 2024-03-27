@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="texts">
+    <h1>Welcome to NTT-Todolist!</h1>
+    <p>Here you can create your own to-do list and manage your tasks.</p>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter task..." [(ngModel)]="taskName">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="addTask(taskName)">Add Task</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body tab-progress">
+            <h5 class="card-title">Tasks in Progress</h5>
+            <div *ngFor="let task of tasksInProgress; let i = index">
+              <div class="card mb-2">
+                <div class="card-body card-progress">
+                  <h6 class="card-title title-task">{{ task }}</h6>
+                  <button class="btn btn-remove btn-danger" (click)="removeTask(tasksInProgress, i)">Remove</button>
+                  <button class="btn btn-success" (click)="completeTask(i)">Complete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body completed">
+            <h5 class="card-title">Completed Tasks</h5>
+            <div *ngFor="let task of completedTasks; let i = index">
+              <div class="card mb-2">
+                <div class="card-body card-completed">
+                  <h6 class="card-title title-task">{{ task }}</h6>
+                  <button class="btn btn-remove btn-danger" (click)="removeTask(completedTasks, i)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
